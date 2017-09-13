@@ -5,7 +5,7 @@ This file will try to explain some basic ideas behind the electronpass project. 
 Most important question is of course why. Passwords are essential part of our digital lives. Managing them however, is difficult. You can't remember every password if they are even slightly secure. The obvious thing to do is use a password manager. Not so obvious is which password manager to use. The ones that work everywhere (computer, phone, tablet..) are closed source payable products. There is nothing wrong with that, but we believe that there should always be an open source alternative. But in the field of password managers there is no good open source alternative that would work on every platform and have user friendly interface. And that's the basic idea behind electronpass: **open source, user friendly password manager.**
 
 ## The How
-So how will we achieve that? The basic idea is that there is a unified wallet format which can be used on all systems and all languages. The format is explained in detail in [Data Definitions.md](Data Definitions.md).
+So how will we achieve that? The basic idea is that there is a unified wallet format which can be used on all systems and all languages. The format is explained in detail in [Data Definitions.md](https://github.com/electronpass/manifesto/blob/master/Data%20Definitions.md).
 
 ## The project itself
 We will try to maintain the wallet format and evolve the definition as the time goes on. We will also try to maintain 3 applications:
