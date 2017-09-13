@@ -73,7 +73,7 @@ We are using JSON because it is flexible and allows us for future extensions. Un
 
 ```
 
-```Items``` is dictionary of passwords that user has stored. Item's key is an UUID. Each item has a ```name``` field which is a display name for the field and ```fields``` attribute which is an array of fields for the entry. Each field has 3 properties:
+```Items``` is dictionary of passwords that user has stored. Item's key is an UUID. Each item has a ```name``` field which is a display name for the field and ```fields``` attribute which is an array of fields for the entry. Each field has 4 properties:
 
 - ```name``` represents a display name, that is shown to the user
 - ```type``` represents a field type. Types are explained in the next section of this document
