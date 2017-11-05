@@ -11,8 +11,8 @@ There are probably better object serialization and storage options than JSON, bu
 
 This benefits make it easier to implement on other platforms than for instance kwallet and that's why the new standard. [Yes we know](https://xkcd.com/927/).
 
-## Data on Disk
-Password data is stored on disk as encrypted JSON. It's encrypted using ChaCha20-Poly1305 authenticated encryption. We are using libsodium library for encrypting the file and we recommend you do the same. JSON with passwords get encrypted and saved on disk as JSON:
+## Wallet on Disk
+Password data is stored on disk as encrypted JSON. It's encrypted using AES256 authenticated encryption. We are using crypto++ library for encrypting the file and we recommend you do the same. More on encryption that we use can be found [here](https://github.com/electronpass/manifesto/blob/master/Encryption.md). JSON with passwords get encrypted and saved on disk as JSON with some metadata:
 
 ```json
 {
@@ -22,12 +22,12 @@ Password data is stored on disk as encrypted JSON. It's encrypted using ChaCha20
 }
 ```
 
-- `timestamp` is a unix timestamp set to when the wallet was saved. It is used for merging 2 wallets (when syncing with),
+- `timestamp` is a unix timestamp set to when the wallet was saved. It is used for merging 2 wallets (when syncing),
 - `version` represents version wallet, for backwards compaibility,
-- `data` is the actual wallet itself (encrypted).
+- `data` is the actual wallet itself (encrypted). Next section covers the actual wallet format.
 
-## JSON Format
-We are using JSON because it is flexible and allows us for future extensions. Unencrypted JSON never gets written to disk and only stays in RAM. Here is an example of a JSON file:
+## Data Format
+The data inside ```data``` value in previous chapter is an actuall wallet in a JSON format. The wallet never gets written to disk unencrypted and only stays in RAM. Here is an example of a JSON file:
 
 ```json
 {
