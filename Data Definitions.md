@@ -2,7 +2,7 @@
 This file explains the wallet format. It is basicly encrypted JSON.
 
 ## Current version
-This document is describing version `0`. This version
+This document is describing version `0`. This version is a development version that changes regulary and is not backward compatible.
 
 ## Why JSON
 There are probably better object serialization and storage options than JSON, but JSON has some major benefits:
