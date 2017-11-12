@@ -5,10 +5,14 @@ This file explains how wallet encryption should be implemented. In general we ar
 ## Key generation
 When trying to unlock wallet, password should be obtained from the user. Key for AES encryption is derived from password using `sha256` hash function, salted with bytes which are hard-coded into all ElectronPass applications.
 
+> To imagine how hard is to break `sha256` hash, see [this video](https://www.youtube.com/watch?v=S9JGmA5_unY)
+
 After the key has been generated, password string should be deleted, so that the chance of stealing user's password is minimal. Even key, derived from user's password should not be ever written to a disk.
 
 ## IV generation
-IV must not be reused for two message encryptions with the same key. Therefore IV should be randomly generated, using a [cryptographically secure pseudorandom number generator](https://en.wikipedia.org/wiki/Cryptographically_secure_pseudorandom_number_generator). When using 32 byte IV, `2^256` different IVs can be generated, which means that chance of collision for two following encryptions is less than `10^-77`. We are aware of famous [Birthday problem](https://en.wikipedia.org/wiki/Birthday_problem), so just for fun consider this: if you had `1 000 000` computers since the beginning of the Universe, and each of them generated `10^9` random IVs every second, then probability of two IVs being same would be lower than `10^-12`.
+IV must not be reused for two message encryptions with the same key. Therefore IV should be randomly generated, using a [cryptographically secure pseudorandom number generator](https://en.wikipedia.org/wiki/Cryptographically_secure_pseudorandom_number_generator). When using 32 byte IV, `2^256` different IVs can be generated, which means that chance of collision for two following encryptions is less than `10^-77`.
+
+> We are aware of famous [Birthday problem](https://en.wikipedia.org/wiki/Birthday_problem), so just for fun consider this: if you had `1 000 000` computers since the beginning of the Universe, and each of them generated `10^9` random IVs every second, then probability of two IVs being same would be lower than `10^-12`.
 
 ## Padding
 Since AES CBC is a block cipher, the data length needs to be a multiple of the block size (16 bytes in the case of AES). Therefore data needs to be padded before the encryption. We are using `PKCS#7` padding.
